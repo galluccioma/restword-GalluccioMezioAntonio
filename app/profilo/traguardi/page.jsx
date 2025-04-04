@@ -153,9 +153,9 @@ export default function BadgeCollection({ achievements, onClose }) {
         <div className="bg-restword min-h-80 flex items-center justify-center rounded-lg p-6 mb-8 text-white">
           <div className="flex flex-col justify-center items-center gap-20">
             <div>
-              <h1 className="text-2xl font-bold mb-2">Crea il tuo profilo Restworld</h1>
+              <h1 className="text-2xl font-bold mb-2">I tuoi Traguardi</h1>
               <p className="text-purple-100">
-                Completa il tuo profilo per aumentare le tue possibilità di trovare il lavoro perfetto
+               Affronta le sfide e sblocca nuovi trofei!
               </p>
             </div>
             <div className="text-sm mt-2">
