@@ -75,7 +75,7 @@ export const getUserProfile = async () => {
       personal: {
         firstName: "Mario",
         lastName: "Linguini",
-        photo: "",
+        photo: "/images/foto-profilo.png",
         dateOfBirth: "1990-05-15",
         email: "mario.linguini@gmeil.com",
         phone: "+39 123 456 7890",

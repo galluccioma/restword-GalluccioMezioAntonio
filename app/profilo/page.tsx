@@ -77,7 +77,7 @@ export default function ProfilePage() {
                   
                   {profile.personal.photo ? (
                     <Image
-                      src={profile.personal.photo || "/placeholder.svg"}
+                      src={profile.personal.photo || "/images/foto-profilo.png"}
                       alt={`${profile.personal.firstName} ${profile.personal.lastName}`}
                       fill
                       className="object-cover"

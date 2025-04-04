@@ -22,13 +22,10 @@ export const metadata = {
   noindex: true, 
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({children,}: Readonly<{children: React.ReactNode}>) 
+{
   return (
-    <html lang="">
+    <html lang="it">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <div className="flex min-h-screen flex-col">

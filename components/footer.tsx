@@ -17,7 +17,7 @@ export default function Footer() {
               passione: la ristorazione.
             </p>
 
-            <Link href="#" className="inline-block">
+            <Link href="/profilo" className="inline-block">
               <button className="bg-[#d6e450] hover:bg-[#c9d643] text-black font-medium px-6 py-2 rounded-md">
                 Accedi
               </button>
@@ -38,42 +38,42 @@ export default function Footer() {
             <h3 className="text-lg font-medium mb-6 uppercase">Business</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Format Innovativo
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Grandi Ristoranti
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Stelle Michelin
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Franchising e Catene
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Piccoli Ristoranti
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Stagionali
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Hotel
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Altre attività
                 </Link>
               </li>
@@ -84,17 +84,17 @@ export default function Footer() {
             <h3 className="text-lg font-medium mb-6 uppercase">Collaborazioni</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Referral Program
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Ambassador Program
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Lavora con noi
                 </Link>
               </li>
@@ -105,12 +105,12 @@ export default function Footer() {
             <h3 className="text-lg font-medium mb-6 uppercase">Risorse</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Press Release
                 </Link>
               </li>
@@ -119,12 +119,12 @@ export default function Footer() {
             <h3 className="text-lg font-medium mb-6 mt-10 uppercase">Lavoratori</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Investitori
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-purple-200 hover:text-white">
+                <Link href="#" className="text-purple-200 hover:text-white cursor-not-allowed">
                   Chi Siamo
                 </Link>
               </li>
