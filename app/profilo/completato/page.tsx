@@ -42,10 +42,12 @@ export default function ProfileSuccessPage() {
                 <div className="text-2xl font-bold">{profileStrength > 0 ? profileStrength : 0}</div>
                 <div className="text-xs uppercase">Punti</div>
               </div>
+              <Link href="/profilo/traguardi">
               <div className="bg-[#d6e450] hover:bg-[#c9d643] text-black rounded-lg p-3 text-center min-w-[100px]">
                 <div className="text-2xl font-bold">{badgeCount}/{totalBadges}</div>
                 <div className="text-xs uppercase">Badge</div>
               </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -95,10 +97,10 @@ export default function ProfileSuccessPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/">
-              <Button variant="default">Vai alla dashboard</Button>
+            <Link href="/profilo/sfide">
+              <Button variant="default">Affronta nuove sfide</Button>
             </Link>
-            <Link href="/profile">
+            <Link href="/profilo">
               <Button
                 variant="outline"
                 className="w-full sm:w-auto border-purple-600 text-purple-600 hover:bg-purple-50"

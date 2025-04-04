@@ -1,75 +1,80 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { getUserProfile } from "@/lib/profile-service"
-import { Star, MapPin, Mail, Phone, Edit, Plus } from "lucide-react"
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { getUserProfile } from "@/lib/profile-service";
+import { Star, MapPin, Mail, Phone, Edit, Plus } from "lucide-react";
 
 // Importazione dei componenti
-import EditableField from "@/components/profile/editable-field"
-import EditableSkills from "@/components/profile/editable-skills"
-import EditableExperience from "@/components/profile/editable-experience"
-import EditableEducation from "@/components/profile/editable-education"
-import AddExperienceForm from "@/components/profile/add-experience-form"
-import AddEducationForm from "@/components/profile/add-education-form"
-import CVManager from "@/components/profile/cv-manager"
-import EditablePreferences from "@/components/profile/editable-preferences"
+import EditableField from "@/components/profile/editable-field";
+import EditableSkills from "@/components/profile/editable-skills";
+import EditableExperience from "@/components/profile/editable-experience";
+import EditableEducation from "@/components/profile/editable-education";
+import AddExperienceForm from "@/components/profile/add-experience-form";
+import AddEducationForm from "@/components/profile/add-education-form";
+import CVManager from "@/components/profile/cv-manager";
+import EditablePreferences from "@/components/profile/editable-preferences";
 
 export default function ProfilePage() {
-  const [profile, setProfile] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [activeTab, setActiveTab] = useState("panoramica")
-  const [isAddingExperience, setIsAddingExperience] = useState(false)
-  const [isAddingEducation, setIsAddingEducation] = useState(false)
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("panoramica");
+  const [isAddingExperience, setIsAddingExperience] = useState(false);
+  const [isAddingEducation, setIsAddingEducation] = useState(false);
 
   const loadProfile = async () => {
     try {
-      const data = await getUserProfile()
-      setProfile(data)
-
+      const data = await getUserProfile();
+      setProfile(data);
     } catch (error) {
-      console.error("Error loading profile:", error)
+      console.error("Error loading profile:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
-    loadProfile()
-  }, [])
+    loadProfile();
+  }, []);
 
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
         <p>Caricamento profilo...</p>
       </div>
-    )
+    );
   }
 
   if (!profile) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-3xl font-bold text-purple-600 mb-6">Nessun profilo trovato</h1>
+        <h1 className="text-3xl font-bold text-purple-600 mb-6">
+          Nessun profilo trovato
+        </h1>
         <p className="mb-8">Non hai ancora creato un profilo professionale.</p>
-        <Link href="/create-profile">
-          <Button className="bg-purple-600 hover:bg-purple-700">Crea il tuo profilo</Button>
+        <Link href="/creazione-profilo">
+          <Button className="bg-purple-600 hover:bg-purple-700">
+            Crea il tuo profilo
+          </Button>
         </Link>
       </div>
-    )
+    );
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <Card className="mb-8">
-          <CardContent className="p-6">
-            <div className="flex flex-col md:flex-row gap-6">
+          <CardContent className="p-6 space-y-6">
+            {/* Sezione Profilo */}
+            <div className="flex flex-col md:flex-row gap-6 ">
               <div className="flex flex-col items-center">
-                <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200 mb-2">
+                <div className="relative w-36 h-36 rounded-full overflow-hidden bg-gray-200 mb-2">
+                  
                   {profile.personal.photo ? (
                     <Image
                       src={profile.personal.photo || "/placeholder.svg"}
@@ -86,11 +91,7 @@ export default function ProfilePage() {
                     </div>
                   )}
                 </div>
-                <div className="text-center">
-                  <Button variant="outline" size="sm" className="text-purple-600 border-purple-600">
-                    Open to work
-                  </Button>
-                </div>
+                
               </div>
 
               <div className="flex-1">
@@ -99,12 +100,16 @@ export default function ProfilePage() {
                     <h1 className="text-2xl font-bold">
                       {profile.personal.firstName} {profile.personal.lastName}
                     </h1>
-                    <p className="text-gray-600">{profile.preferences.position || "Chef de Cuisine"}</p>
+                    <p className="text-gray-600">
+                      {profile.preferences.position || "Chef de Cuisine"}
+                    </p>
 
                     <div className="flex flex-wrap gap-2 mt-2">
                       <div className="flex items-center text-sm">
                         <MapPin className="h-4 w-4 mr-1 text-gray-500" />
-                        <span>{profile.personal.city || "Venezia, Italia"}</span>
+                        <span>
+                          {profile.personal.city || "Venezia, Italia"}
+                        </span>
                       </div>
 
                       {profile.personal.email && (
@@ -123,25 +128,19 @@ export default function ProfilePage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center">
-                      <Star className="h-5 w-5 text-yellow-400" />
-                      <span className="font-semibold ml-1">560</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="h-5 w-5 bg-purple-600 rounded-full flex items-center justify-center text-white">
-                        <span className="text-xs">⬥</span>
-                      </div>
-                      <span className="font-semibold ml-1">12</span>
-                    </div>
-                  </div>
+                  <div className="text-center">
+                  <span className="ml-2 text-lg bg-green-100 text-green-800 px-4 py-1 rounded">Open to work</span>
+                </div>
                 </div>
 
                 <div className="mt-4">
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-sm">Profilo 85%</span>
-                    <Link href="/profile/edit">
-                      <Button variant="ghost" size="sm" className="h-8 px-2 text-purple-600">
+                    <Link href="/profilo/modifica">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 px-2 text-purple-600">
                         <Edit className="h-4 w-4" />
                       </Button>
                     </Link>
@@ -152,53 +151,65 @@ export default function ProfilePage() {
                 </div>
               </div>
             </div>
+            {/* Sezione About */}
+            <div>
+              <div className="flex justify-between items-center">
+                <h2 className="font-medium text-[#351471]">Su di me</h2>
+              </div>
+              <EditableField
+                value={
+                  profile.personal.bio ||
+                  "Chef appassionato con 5 anni di esperienza nella cucina mediterranea e fusion. Specializzato nella preparazione di piatti a base di pesce e nella gestione di brigate di cucina."
+                }
+                type="textarea"
+                fieldName="personal.bio"
+                onUpdate={loadProfile}
+              />
+            </div>
+            {/* Sezione CV */}
+            <div>
+              <CVManager cvList={profile.cv || []} onUpdate={loadProfile} />
+            </div>
           </CardContent>
         </Card>
-
-        <div className="mb-6">
-          <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">Su di me</h2>
-          </div>
-          <EditableField
-            value={
-              profile.personal.bio ||
-              "Chef appassionato con 5 anni di esperienza nella cucina mediterranea e fusion. Specializzato nella preparazione di piatti a base di pesce e nella gestione di brigate di cucina."
-            }
-            type="textarea"
-            fieldName="personal.bio"
-            onUpdate={loadProfile}
-          />
-        </div>
-
-        <div className="mb-6">
-          <CVManager cvList={profile.cv || []} onUpdate={loadProfile} />
-        </div>
 
         <div className="mb-8">
           <div className="border-b">
             <div className="flex overflow-x-auto">
               <button
-                className={`px-6 py-3 font-medium text-sm ${activeTab === "panoramica" ? "border-b-2 border-purple-600 text-purple-600" : "text-gray-500"}`}
-                onClick={() => setActiveTab("panoramica")}
-              >
+                className={`px-6 py-3 font-medium text-sm ${
+                  activeTab === "panoramica"
+                    ? "border-b-2 border-purple-600 text-purple-600"
+                    : "text-gray-500"
+                }`}
+                onClick={() => setActiveTab("panoramica")}>
                 Panoramica
               </button>
               <button
-                className={`px-6 py-3 font-medium text-sm ${activeTab === "esperienze" ? "border-b-2 border-purple-600 text-purple-600" : "text-gray-500"}`}
-                onClick={() => setActiveTab("esperienze")}
-              >
+                className={`px-6 py-3 font-medium text-sm ${
+                  activeTab === "esperienze"
+                    ? "border-b-2 border-purple-600 text-purple-600"
+                    : "text-gray-500"
+                }`}
+                onClick={() => setActiveTab("esperienze")}>
                 Esperienze
               </button>
               <button
-                className={`px-6 py-3 font-medium text-sm ${activeTab === "formazione" ? "border-b-2 border-purple-600 text-purple-600" : "text-gray-500"}`}
-                onClick={() => setActiveTab("formazione")}
-              >
+                className={`px-6 py-3 font-medium text-sm ${
+                  activeTab === "formazione"
+                    ? "border-b-2 border-purple-600 text-purple-600"
+                    : "text-gray-500"
+                }`}
+                onClick={() => setActiveTab("formazione")}>
                 Formazione
               </button>
               <button
-                className={`px-6 py-3 font-medium text-sm ${activeTab === "preferenze" ? "border-b-2 border-purple-600 text-purple-600" : "text-gray-500"}`}
-                onClick={() => setActiveTab("preferenze")}
-              >
+                className={`px-6 py-3 font-medium text-sm ${
+                  activeTab === "preferenze"
+                    ? "border-b-2 border-purple-600 text-purple-600"
+                    : "text-gray-500"
+                }`}
+                onClick={() => setActiveTab("preferenze")}>
                 Preferenze
               </button>
             </div>
@@ -223,40 +234,45 @@ export default function ProfilePage() {
                 />
               </div>
 
-
-                <Card className="p-6 mb-8">
+              <Card className="p-6 mb-8">
                 <div className="flex justify-between items-center mb-4  ">
                   <h3 className="text-lg font-medium">Esperienze Lavorative</h3>
                   <Button
                     variant="link"
                     size="sm"
                     className="text-purple-600"
-                    onClick={() => setActiveTab("esperienze")}
-                  >
+                    onClick={() => setActiveTab("esperienze")}>
                     Vedi tutto
                   </Button>
-                  
                 </div>
                 <div className="space-y-6">
-                  {profile.workExperience && profile.workExperience.length > 0 ? (
+                  {profile.workExperience &&
+                  profile.workExperience.length > 0 ? (
                     profile.workExperience
                       .slice(0, 2)
-                      .map((exp) => <EditableExperience key={exp.id} experience={exp} onUpdate={loadProfile} />)
+                      .map((exp) => (
+                        <EditableExperience
+                          key={exp.id}
+                          experience={exp}
+                          onUpdate={loadProfile}
+                        />
+                      ))
                   ) : (
-                    <p className="text-gray-500 italic">Nessuna esperienza lavorativa aggiunta.</p>
+                    <p className="text-gray-500 italic">
+                      Nessuna esperienza lavorativa aggiunta.
+                    </p>
                   )}
                 </div>
-                </Card>
+              </Card>
 
-               <Card className="p-6">
+              <Card className="p-6">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg font-medium">Formazione</h3>
                   <Button
                     variant="link"
                     size="sm"
                     className="text-purple-600"
-                    onClick={() => setActiveTab("formazione")}
-                  >
+                    onClick={() => setActiveTab("formazione")}>
                     Vedi tutto
                   </Button>
                 </div>
@@ -265,9 +281,17 @@ export default function ProfilePage() {
                   {profile.education && profile.education.length > 0 ? (
                     profile.education
                       .slice(0, 2)
-                      .map((edu) => <EditableEducation key={edu.id} education={edu} onUpdate={loadProfile} />)
+                      .map((edu) => (
+                        <EditableEducation
+                          key={edu.id}
+                          education={edu}
+                          onUpdate={loadProfile}
+                        />
+                      ))
                   ) : (
-                    <p className="text-gray-500 italic">Nessuna formazione aggiunta.</p>
+                    <p className="text-gray-500 italic">
+                      Nessuna formazione aggiunta.
+                    </p>
                   )}
                 </div>
               </Card>
@@ -282,8 +306,7 @@ export default function ProfilePage() {
                   variant="outline"
                   size="sm"
                   className="text-purple-600 border-purple-600"
-                  onClick={() => setIsAddingExperience(true)}
-                >
+                  onClick={() => setIsAddingExperience(true)}>
                   <Plus className="h-4 w-4 mr-1" />
                   Aggiungi
                 </Button>
@@ -293,8 +316,8 @@ export default function ProfilePage() {
                 <div className="mb-6">
                   <AddExperienceForm
                     onAdd={() => {
-                      loadProfile()
-                      setIsAddingExperience(false)
+                      loadProfile();
+                      setIsAddingExperience(false);
                     }}
                     onCancel={() => setIsAddingExperience(false)}
                   />
@@ -304,10 +327,16 @@ export default function ProfilePage() {
               <div className="space-y-6">
                 {profile.workExperience && profile.workExperience.length > 0 ? (
                   profile.workExperience.map((exp) => (
-                    <EditableExperience key={exp.id} experience={exp} onUpdate={loadProfile} />
+                    <EditableExperience
+                      key={exp.id}
+                      experience={exp}
+                      onUpdate={loadProfile}
+                    />
                   ))
                 ) : (
-                  <p className="text-gray-500 italic">Nessuna esperienza lavorativa aggiunta.</p>
+                  <p className="text-gray-500 italic">
+                    Nessuna esperienza lavorativa aggiunta.
+                  </p>
                 )}
               </div>
             </Card>
@@ -321,8 +350,7 @@ export default function ProfilePage() {
                   variant="outline"
                   size="sm"
                   className="text-purple-600 border-purple-600"
-                  onClick={() => setIsAddingEducation(true)}
-                >
+                  onClick={() => setIsAddingEducation(true)}>
                   <Plus className="h-4 w-4 mr-1" />
                   Aggiungi
                 </Button>
@@ -332,8 +360,8 @@ export default function ProfilePage() {
                 <div className="mb-6">
                   <AddEducationForm
                     onAdd={() => {
-                      loadProfile()
-                      setIsAddingEducation(false)
+                      loadProfile();
+                      setIsAddingEducation(false);
                     }}
                     onCancel={() => setIsAddingEducation(false)}
                   />
@@ -343,10 +371,16 @@ export default function ProfilePage() {
               <div className="space-y-6">
                 {profile.education && profile.education.length > 0 ? (
                   profile.education.map((edu) => (
-                    <EditableEducation key={edu.id} education={edu} onUpdate={loadProfile} />
+                    <EditableEducation
+                      key={edu.id}
+                      education={edu}
+                      onUpdate={loadProfile}
+                    />
                   ))
                 ) : (
-                  <p className="text-gray-500 italic">Nessuna formazione aggiunta.</p>
+                  <p className="text-gray-500 italic">
+                    Nessuna formazione aggiunta.
+                  </p>
                 )}
               </div>
             </Card>
@@ -354,12 +388,14 @@ export default function ProfilePage() {
 
           {activeTab === "preferenze" && (
             <div className="py-6">
-              <EditablePreferences preferences={profile.preferences} onUpdate={loadProfile} />
+              <EditablePreferences
+                preferences={profile.preferences}
+                onUpdate={loadProfile}
+              />
             </div>
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }
-

@@ -64,7 +64,7 @@ export default function EditProfile() {
 
   const handleSave = async () => {
     await saveUserProfile(formData);
-    router.push("/profile");
+    router.push("/profilo");
   };
 
   if (loading) {
@@ -132,7 +132,7 @@ export default function EditProfile() {
           </Tabs>
 
           <div className="flex justify-between mt-8">
-            <Button variant="outline" onClick={() => router.push("/profile")}>
+            <Button variant="outline" onClick={() => router.push("/profilo")}>
               Annulla
             </Button>
             <Button

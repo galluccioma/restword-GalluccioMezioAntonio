@@ -13,12 +13,12 @@ export default function Home() {
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-          <Link href="/create-profile">
+          <Link href="/creazione-profilo">
             <Button size="lg">
               Crea il tuo profilo
             </Button>
           </Link>
-          <Link href="/profile">
+          <Link href="/profilo">
             <Button size="lg" variant="outline" >
               Visualizza profilo
             </Button>

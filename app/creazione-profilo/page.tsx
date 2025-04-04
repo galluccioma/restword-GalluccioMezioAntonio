@@ -13,6 +13,7 @@ import PreferencesForm from "@/components/profile/preferences-form"
 import CvUploadForm from "@/components/profile/cv-upload-form"
 import ReviewForm from "@/components/profile/review-form"
 import { saveUserProfile } from "@/lib/profile-service"
+import Link from "next/link"
 
 export default function CreateProfile() {
   const router = useRouter()
@@ -65,7 +66,7 @@ export default function CreateProfile() {
 
   const handleSubmit = async () => {
     await saveUserProfile(formData)
-    router.push("/profile/success")
+    router.push("/profilo/completato")
   }
 
   // Calculate profile strength
@@ -120,10 +121,12 @@ export default function CreateProfile() {
                 <div className="text-2xl font-bold">{profileStrength > 0 ? profileStrength : 0}</div>
                 <div className="text-xs uppercase">Punti</div>
               </div>
+              <Link href="/profilo/traguardi">
               <div className="bg-[#d6e450] hover:bg-[#c9d643] text-black rounded-lg p-3 text-center min-w-[100px]">
                 <div className="text-2xl font-bold">{badgeCount}/{totalBadges}</div>
                 <div className="text-xs uppercase">Badge</div>
               </div>
+              </Link>
             </div>
           </div>
         </div>

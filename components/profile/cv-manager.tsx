@@ -149,7 +149,7 @@ export default function CVManager({ cvList, onUpdate }: CVManagerProps) {
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">Curriculum Vitae</h2>
+        <h2 className="font-medium text-[#351471]">Curriculum Vitae</h2>
         <div>
           <input
             id="cv-upload"
@@ -197,12 +197,12 @@ export default function CVManager({ cvList, onUpdate }: CVManagerProps) {
           </div>
         ) : (
           cvList.map((cv) => (
-            <div key={cv.id} className="flex items-center p-4 border rounded-lg bg-white">
+            <div key={cv.id} className="flex items-center p-4 rounded-lg bg-purple-50">
               {deletingId === cv.id ? (
                 <div className="flex-1 text-center">
                   <p className="mb-2">Sei sicuro di voler eliminare questo CV?</p>
                   <div className="flex justify-center gap-2">
-                    <Button variant="destructive" size="sm" onClick={() => handleDelete(cv.id)} disabled={isLoading}>
+                    <Button variant="alert" size="sm" onClick={() => handleDelete(cv.id)} disabled={isLoading}>
                       Elimina
                     </Button>
                     <Button variant="outline" size="sm" onClick={() => setDeletingId(null)} disabled={isLoading}>
@@ -215,7 +215,7 @@ export default function CVManager({ cvList, onUpdate }: CVManagerProps) {
                   <FileText className="h-6 w-6 text-purple-600 mr-4" />
                   <div className="flex-1">
                     <div className="flex items-center">
-                      <p className="font-medium">{cv.name}</p>
+                      <p className="font-medium text-purple-600">{cv.name}</p>
                       {cv.default && (
                         <span className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded">Default</span>
                       )}
@@ -223,7 +223,7 @@ export default function CVManager({ cvList, onUpdate }: CVManagerProps) {
                     <div className="flex text-sm text-gray-500 mt-1">
                       <span className="mr-4">Ultima modifica: {formatDate(cv.date)}</span>
                       {cv.language && <span className="mr-4">{cv.language}</span>}
-                      {cv.size && <span>{cv.size}</span>}
+                      {cv.size && <span className="hidden md:block">{cv.size}</span>}
                     </div>
                   </div>
                   <div className="flex gap-2">

@@ -55,7 +55,7 @@ export default function ProfilePage() {
       <div className="container mx-auto px-4 py-12 text-center">
         <h1 className="text-3xl font-bold text-purple-600 mb-6">Nessun profilo trovato</h1>
         <p className="mb-8">Non hai ancora creato un profilo professionale.</p>
-        <Link href="/create-profile">
+        <Link href="/creazione-profilo">
           <Button className="bg-purple-600 hover:bg-purple-700">Crea il tuo profilo</Button>
         </Link>
       </div>
@@ -140,7 +140,7 @@ export default function ProfilePage() {
                 <div className="mt-4">
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-sm">Profilo 85%</span>
-                    <Link href="/profile/edit">
+                    <Link href="/profilo/modifica">
                       <Button variant="ghost" size="sm" className="h-8 px-2 text-purple-600">
                         <Edit className="h-4 w-4" />
                       </Button>

@@ -49,7 +49,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center">
-        <Link href="/profile">
+        <Link href="/profilo">
           <Button className="bg-[#d6e450] hover:bg-[#c9d643] text-black font-medium">Accedi</Button>
           </Link>
         </div>

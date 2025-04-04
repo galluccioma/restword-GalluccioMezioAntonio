@@ -195,7 +195,7 @@ export default function EditableExperience({ experience, onUpdate }: EditableExp
           <div className="text-center">
             <p className="mb-4">Sei sicuro di voler eliminare questa esperienza?</p>
             <div className="flex justify-center gap-4">
-              <Button variant="destructive" onClick={handleDelete} disabled={isLoading}>
+              <Button variant="alert" onClick={handleDelete} disabled={isLoading}>
                 Elimina
               </Button>
               <Button variant="outline" onClick={handleCancel} disabled={isLoading}>
