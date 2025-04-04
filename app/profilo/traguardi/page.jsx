@@ -151,17 +151,14 @@ export default function BadgeCollection({ achievements, onClose }) {
       <div className="max-w-4xl mx-auto rounded-2xl">
         {/* Intestazione */}
         <div className="bg-restword min-h-80 flex items-center justify-center rounded-lg p-6 mb-8 text-white">
-          <div className="flex flex-col justify-center items-center gap-20">
+          <div className="flex flex-col justify-center items-center gap-6">
             <div>
               <h1 className="text-2xl font-bold mb-2">I tuoi Traguardi</h1>
-              <p className="text-purple-100">
-               Affronta le sfide e sblocca nuovi trofei!
-              </p>
-            </div>
-            <div className="text-sm mt-2">
+              <div className="text-sm mt-2">
             Hai sbloccato <span className="font-bold">{unlockedCount}</span> badge su{" "}
             <span className="font-bold">{totalCount}</span> ({percentUnlocked}%)
           </div>
+            </div>
           <Link href="/profilo/sfide">
             <Button variant="default" className="">
               Affronta le sfide!
