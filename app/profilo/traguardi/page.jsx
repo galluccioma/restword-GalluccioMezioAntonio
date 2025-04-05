@@ -1,14 +1,6 @@
 "use client";
 
-import { X } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -54,7 +46,7 @@ export default function BadgeCollection({ achievements, onClose }) {
       </div>
 
       <Tabs defaultValue="profile" className="w-full">
-        <TabsList className="w-full justify-start px-6 pt-4 bg-[#f6f5ff]">
+        <TabsList className="grid grid-cols-3 w-full bg-[#efedff]">
           <TabsTrigger
             value="profile"
             className="data-[state=active]:bg-[#7641d9] data-[state=active]:text-white">
@@ -72,7 +64,7 @@ export default function BadgeCollection({ achievements, onClose }) {
           </TabsTrigger>
         </TabsList>
 
-        <div className="px-6 py-4 bg-[#f6f5ff]">
+        <div className="py-4 bg-[#f6f5ff]">
           <TabsContent value="all" className="mt-0">
             <Card className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

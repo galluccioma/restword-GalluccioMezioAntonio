@@ -229,11 +229,11 @@ function OverviewSection() {
       <div className="bg-white rounded-2xl shadow-md overflow-hidden">
         <div className="relative">
           <Image
-            src="/placeholder.svg?height=300&width=600"
+            src="/sfida.png"
             alt="Challenge"
             width={600}
             height={300}
-            className="w-full h-[160px] object-cover"
+            className="w-full h-[240px] object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#351471]/80 to-transparent flex flex-col justify-end p-6">
             <h2 className="text-xl font-bold text-white">Sfida in Evidenza</h2>

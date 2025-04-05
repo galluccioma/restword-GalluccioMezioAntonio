@@ -6,10 +6,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getUserProfile } from "@/lib/data";
 import { Star, MapPin, Mail, Phone, Edit, Plus } from "lucide-react";
 
-// Importazione dei componenti
 import EditableField from "@/components/profile/editable-field";
 import EditableSkills from "@/components/profile/editable-skills";
 import EditableExperience from "@/components/profile/editable-experience";
@@ -26,9 +26,9 @@ export default function ProfilePage() {
   const [isAddingExperience, setIsAddingExperience] = useState(false);
   const [isAddingEducation, setIsAddingEducation] = useState(false);
 
-  const profileStrength = 87
-  const badgeCount = 1 // This would be calculated based on achievements
-  const totalBadges = 14
+  const profileStrength = 87;
+  const badgeCount = 1;
+  const totalBadges = 14;
 
   const loadProfile = async () => {
     try {
@@ -72,347 +72,172 @@ export default function ProfilePage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-5xl mx-auto">
-          {/* Purple header banner */}
-          <div className="bg-restword min-h-80 flex items-center rounded-lg p-6 mb-8 text-white">
+        <div className="bg-restword min-h-80 flex items-center rounded-lg p-6 mb-8 text-white">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-20">
             <div>
-              <h1 className="text-2xl font-bold mb-2">Bentornato Mario</h1>
+              <h1 className="text-2xl font-bold mb-2">Bentornato {profile.personal.firstName}</h1>
               <p className="text-purple-100">
                 Completa le tue sfide giornaliere e porta il tuo profilo al livello successivo!
               </p>
             </div>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
-            <Link href="/profilo/sfide">
-              <div className="bg-white/10 hover:bg-white/30 rounded-lg p-3 text-center min-w-[100px]">
-                <div className="text-2xl font-bold">{profileStrength > 0 ? profileStrength : 0}</div>
-                <div className="text-xs uppercase">Punti</div>
-              </div>
+              <Link href="/profilo/sfide">
+                <div className="bg-white/10 hover:bg-white/30 rounded-lg p-3 text-center min-w-[100px]">
+                  <div className="text-2xl font-bold">{profileStrength}</div>
+                  <div className="text-xs uppercase">Punti</div>
+                </div>
               </Link>
               <Link href="/profilo/traguardi">
-              <div className="bg-[#d6e450] hover:bg-[#c9d643] text-black rounded-lg p-3 text-center min-w-[100px]">
-                <div className="text-2xl font-bold">{badgeCount}/{totalBadges}</div>
-                <div className="text-xs uppercase">Badge</div>
-              </div>
+                <div className="bg-[#d6e450] hover:bg-[#c9d643] text-black rounded-lg p-3 text-center min-w-[100px]">
+                  <div className="text-2xl font-bold">{badgeCount}/{totalBadges}</div>
+                  <div className="text-xs uppercase">Badge</div>
+                </div>
               </Link>
             </div>
           </div>
         </div>
-        <Card className="mb-8">
-          <CardContent className="p-6 space-y-6">
-            {/* Sezione Profilo */}
-            <div className="flex flex-col md:flex-row gap-6 ">
-              <div className="flex flex-col items-center">
-                <div className="relative w-36 h-36 rounded-full overflow-hidden bg-gray-200 mb-2">
-                  
-                  {profile.personal.photo ? (
-                    <Image
-                      src={profile.personal.photo || "/images/foto-profilo.png"}
-                      alt={`${profile.personal.firstName} ${profile.personal.lastName}`}
-                      fill
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400">
-                      <span className="text-2xl font-semibold">
-                        {profile.personal.firstName?.charAt(0)}
-                        {profile.personal.lastName?.charAt(0)}
-                      </span>
-                    </div>
-                  )}
-                </div>
-                
-              </div>
 
-              <div className="flex-1">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h1 className="text-2xl font-bold">
-                      {profile.personal.firstName} {profile.personal.lastName}
-                    </h1>
-                    <p className="text-gray-600">
-                      {profile.preferences.position || "Chef de Cuisine"}
-                    </p>
+        <Tabs defaultValue="panoramica" className="w-full">
+          <TabsList className="grid grid-cols-4 w-full bg-[#efedff]">
+            <TabsTrigger value="panoramica" className="data-[state=active]:bg-[#7641d9] data-[state=active]:text-white">Panoramica</TabsTrigger>
+            <TabsTrigger value="esperienze" className="data-[state=active]:bg-[#7641d9] data-[state=active]:text-white">Esperienze</TabsTrigger>
+            <TabsTrigger value="formazione" className="data-[state=active]:bg-[#7641d9] data-[state=active]:text-white">Formazione</TabsTrigger>
+            <TabsTrigger value="preferenze" className="data-[state=active]:bg-[#7641d9] data-[state=active]:text-white">Preferenze</TabsTrigger>
+          </TabsList>
 
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      <div className="flex items-center text-sm">
-                        <MapPin className="h-4 w-4 mr-1 text-gray-500" />
-                        <span>
-                          {profile.personal.city || "Venezia, Italia"}
-                        </span>
-                      </div>
-
-                      {profile.personal.email && (
-                        <div className="flex items-center text-sm">
-                          <Mail className="h-4 w-4 mr-1 text-gray-500" />
-                          <span>{profile.personal.email}</span>
-                        </div>
-                      )}
-
-                      {profile.personal.phone && (
-                        <div className="flex items-center text-sm">
-                          <Phone className="h-4 w-4 mr-1 text-gray-500" />
-                          <span>{profile.personal.phone}</span>
+          <TabsContent value="panoramica" className="py-6">
+            <Card className="mb-6">
+              <CardContent className="p-6 space-y-6">
+                <div className="flex flex-col md:flex-row gap-6 ">
+                  <div className="flex flex-col items-center">
+                    <div className="relative w-36 h-36 rounded-full overflow-hidden bg-gray-200 mb-2">
+                      {profile.personal.photo ? (
+                        <Image
+                          src={profile.personal.photo}
+                          alt={`${profile.personal.firstName} ${profile.personal.lastName}`}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-gray-400">
+                          <span className="text-2xl font-semibold">
+                            {profile.personal.firstName?.charAt(0)}
+                            {profile.personal.lastName?.charAt(0)}
+                          </span>
                         </div>
                       )}
                     </div>
                   </div>
 
-                  <div className="text-center">
-                  <span className="ml-2 text-lg bg-green-100 text-green-800 px-4 py-1 rounded">Open to work</span>
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h1 className="text-2xl font-bold">
+                          {profile.personal.firstName} {profile.personal.lastName}
+                        </h1>
+                        <p className="text-gray-600">
+                          {profile.preferences.position || "Chef de Cuisine"}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          <div className="flex items-center text-sm">
+                            <MapPin className="h-4 w-4 mr-1 text-gray-500" />
+                            <span>{profile.personal.city || "Venezia, Italia"}</span>
+                          </div>
+                          {profile.personal.email && (
+                            <div className="flex items-center text-sm">
+                              <Mail className="h-4 w-4 mr-1 text-gray-500" />
+                              <span>{profile.personal.email}</span>
+                            </div>
+                          )}
+                          {profile.personal.phone && (
+                            <div className="flex items-center text-sm">
+                              <Phone className="h-4 w-4 mr-1 text-gray-500" />
+                              <span>{profile.personal.phone}</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <span className="ml-2 text-lg bg-green-100 text-green-800 px-4 py-1 rounded">Open to work</span>
+                      </div>
+                    </div>
+                    <div className="mt-4">
+                      <Progress value={85} className="h-2 bg-gray-200">
+                        <div className="h-full bg-gradient-to-r from-yellow-400 to-purple-600 rounded-full" />
+                      </Progress>
+                    </div>
+                  </div>
                 </div>
+                <div>
+                  <h2 className="font-medium text-[#351471]">Su di me</h2>
+                  <EditableField
+                    value={profile.personal.bio || "Chef appassionato con 5 anni di esperienza..."}
+                    type="textarea"
+                    fieldName="personal.bio"
+                    onUpdate={loadProfile}
+                  />
                 </div>
+                <CVManager cvList={profile.cv || []} onUpdate={loadProfile} />
+              </CardContent>
+            </Card>
 
-                <div className="mt-4">
-                  <Progress value={85} className="h-2 bg-gray-200">
-                    <div className="h-full bg-gradient-to-r from-yellow-400 to-purple-600 rounded-full" />
-                  </Progress>
-                </div>
-              </div>
-            </div>
-            {/* Sezione About */}
-            <div>
-              <div className="flex justify-between items-center">
-                <h2 className="font-medium text-[#351471]">Su di me</h2>
-              </div>
-              <EditableField
-                value={
-                  profile.personal.bio ||
-                  "Chef appassionato con 5 anni di esperienza nella cucina mediterranea e fusion. Specializzato nella preparazione di piatti a base di pesce e nella gestione di brigate di cucina."
-                }
-                type="textarea"
-                fieldName="personal.bio"
-                onUpdate={loadProfile}
-              />
-            </div>
-            {/* Sezione CV */}
-            <div>
-              <CVManager cvList={profile.cv || []} onUpdate={loadProfile} />
-            </div>
-          </CardContent>
-        </Card>
+            <EditableSkills skills={profile.skills || []} onUpdate={loadProfile} />
+          </TabsContent>
 
-        <div className="mb-8">
-          <div className="border-b">
-            <div className="flex overflow-x-auto">
-              <button
-                className={`px-6 py-3 font-medium text-sm ${
-                  activeTab === "panoramica"
-                    ? "border-b-2 border-purple-600 text-purple-600"
-                    : "text-gray-500"
-                }`}
-                onClick={() => setActiveTab("panoramica")}>
-                Panoramica
-              </button>
-              <button
-                className={`px-6 py-3 font-medium text-sm ${
-                  activeTab === "esperienze"
-                    ? "border-b-2 border-purple-600 text-purple-600"
-                    : "text-gray-500"
-                }`}
-                onClick={() => setActiveTab("esperienze")}>
-                Esperienze
-              </button>
-              <button
-                className={`px-6 py-3 font-medium text-sm ${
-                  activeTab === "formazione"
-                    ? "border-b-2 border-purple-600 text-purple-600"
-                    : "text-gray-500"
-                }`}
-                onClick={() => setActiveTab("formazione")}>
-                Formazione
-              </button>
-              <button
-                className={`px-6 py-3 font-medium text-sm ${
-                  activeTab === "preferenze"
-                    ? "border-b-2 border-purple-600 text-purple-600"
-                    : "text-gray-500"
-                }`}
-                onClick={() => setActiveTab("preferenze")}>
-                Preferenze
-              </button>
-            </div>
-          </div>
-
-          {activeTab === "panoramica" && (
-            <div className="py-6">
-              <div className="mb-6">
-                <EditableSkills
-                  skills={
-                    profile.skills || [
-                      "Cucina mediterranea",
-                      "Cucina fusion",
-                      "Gestione della brigata",
-                      "Menu planning",
-                      "Controllo costi",
-                      "Pasticceria base",
-                      "HACCP",
-                    ]
-                  }
-                  onUpdate={loadProfile}
-                />
-              </div>
-
-              <Card className="p-6 mb-8">
-                <div className="flex justify-between items-center mb-4  ">
-                  <h3 className="text-lg font-medium">Esperienze Lavorative</h3>
-                  <Button
-                    variant="link"
-                    size="sm"
-                    className="text-purple-600"
-                    onClick={() => setActiveTab("esperienze")}>
-                    Vedi tutto
-                  </Button>
-                </div>
-                <div className="space-y-6">
-                  {profile.workExperience &&
-                  profile.workExperience.length > 0 ? (
-                    profile.workExperience
-                      .slice(0, 2)
-                      .map((exp) => (
-                        <EditableExperience
-                          key={exp.id}
-                          experience={exp}
-                          onUpdate={loadProfile}
-                        />
-                      ))
-                  ) : (
-                    <p className="text-gray-500 italic">
-                      Nessuna esperienza lavorativa aggiunta.
-                    </p>
-                  )}
-                </div>
-              </Card>
-
-              <Card className="p-6">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-medium">Formazione</h3>
-                  <Button
-                    variant="link"
-                    size="sm"
-                    className="text-purple-600"
-                    onClick={() => setActiveTab("formazione")}>
-                    Vedi tutto
-                  </Button>
-                </div>
-
-                <div className="space-y-6">
-                  {profile.education && profile.education.length > 0 ? (
-                    profile.education
-                      .slice(0, 2)
-                      .map((edu) => (
-                        <EditableEducation
-                          key={edu.id}
-                          education={edu}
-                          onUpdate={loadProfile}
-                        />
-                      ))
-                  ) : (
-                    <p className="text-gray-500 italic">
-                      Nessuna formazione aggiunta.
-                    </p>
-                  )}
-                </div>
-              </Card>
-            </div>
-          )}
-
-          {activeTab === "esperienze" && (
-            <Card className="p-6 my-6">
+          <TabsContent value="esperienze" className="py-6">
+            <Card className="p-6">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-medium">Esperienze Lavorative</h3>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="text-purple-600 border-purple-600"
-                  onClick={() => setIsAddingExperience(true)}>
-                  <Plus className="h-4 w-4 mr-1" />
-                  Aggiungi
+                <Button onClick={() => setIsAddingExperience(true)} variant="outline" className="text-purple-600 border-purple-600">
+                  <Plus className="h-4 w-4 mr-1" /> Aggiungi
                 </Button>
               </div>
-
               {isAddingExperience && (
-                <div className="mb-6">
-                  <AddExperienceForm
-                    onAdd={() => {
-                      loadProfile();
-                      setIsAddingExperience(false);
-                    }}
-                    onCancel={() => setIsAddingExperience(false)}
-                  />
-                </div>
+                <AddExperienceForm
+                  onAdd={() => {
+                    loadProfile();
+                    setIsAddingExperience(false);
+                  }}
+                  onCancel={() => setIsAddingExperience(false)}
+                />
               )}
-
               <div className="space-y-6">
-                {profile.workExperience && profile.workExperience.length > 0 ? (
-                  profile.workExperience.map((exp) => (
-                    <EditableExperience
-                      key={exp.id}
-                      experience={exp}
-                      onUpdate={loadProfile}
-                    />
-                  ))
-                ) : (
-                  <p className="text-gray-500 italic">
-                    Nessuna esperienza lavorativa aggiunta.
-                  </p>
-                )}
+                {(profile.workExperience || []).map((exp) => (
+                  <EditableExperience key={exp.id} experience={exp} onUpdate={loadProfile} />
+                ))}
               </div>
             </Card>
-          )}
+          </TabsContent>
 
-          {activeTab === "formazione" && (
-            <Card className="p-6 my-6">
+          <TabsContent value="formazione" className="py-6">
+            <Card className="p-6">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-medium">Formazione</h3>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="text-purple-600 border-purple-600"
-                  onClick={() => setIsAddingEducation(true)}>
-                  <Plus className="h-4 w-4 mr-1" />
-                  Aggiungi
+                <Button onClick={() => setIsAddingEducation(true)} variant="outline" className="text-purple-600 border-purple-600">
+                  <Plus className="h-4 w-4 mr-1" /> Aggiungi
                 </Button>
               </div>
-
               {isAddingEducation && (
-                <div className="mb-6">
-                  <AddEducationForm
-                    onAdd={() => {
-                      loadProfile();
-                      setIsAddingEducation(false);
-                    }}
-                    onCancel={() => setIsAddingEducation(false)}
-                  />
-                </div>
+                <AddEducationForm
+                  onAdd={() => {
+                    loadProfile();
+                    setIsAddingEducation(false);
+                  }}
+                  onCancel={() => setIsAddingEducation(false)}
+                />
               )}
-
               <div className="space-y-6">
-                {profile.education && profile.education.length > 0 ? (
-                  profile.education.map((edu) => (
-                    <EditableEducation
-                      key={edu.id}
-                      education={edu}
-                      onUpdate={loadProfile}
-                    />
-                  ))
-                ) : (
-                  <p className="text-gray-500 italic">
-                    Nessuna formazione aggiunta.
-                  </p>
-                )}
+                {(profile.education || []).map((edu) => (
+                  <EditableEducation key={edu.id} education={edu} onUpdate={loadProfile} />
+                ))}
               </div>
             </Card>
-          )}
+          </TabsContent>
 
-          {activeTab === "preferenze" && (
-            <div className="py-6">
-              <EditablePreferences
-                preferences={profile.preferences}
-                onUpdate={loadProfile}
-              />
-            </div>
-          )}
-        </div>
+          <TabsContent value="preferenze" className="py-6">
+            <EditablePreferences preferences={profile.preferences} onUpdate={loadProfile} />
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );
