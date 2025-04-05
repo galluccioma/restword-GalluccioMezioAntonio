@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Plus, X } from "lucide-react"
-import { addWorkExperience } from "@/lib/profile-service"
+import { addWorkExperience } from "@/lib/data"
 
 interface AddExperienceFormProps {
   onAdd?: () => void

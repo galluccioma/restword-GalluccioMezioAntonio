@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Edit, Trash2, Check, X } from "lucide-react"
-import { updateEducation, deleteEducation } from "@/lib/profile-service"
+import { updateEducation, deleteEducation } from "@/lib/data"
 
 interface Education {
   id: string

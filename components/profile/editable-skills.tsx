@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Edit, Check, X, Plus } from "lucide-react"
-import { updateProfileField } from "@/lib/profile-service"
+import { updateProfileField } from "@/lib/data"
 import { Card, CardContent } from "@/components/ui/card"
 
 interface EditableSkillsProps {

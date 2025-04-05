@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { getUserProfile } from "@/lib/profile-service"
+import { getUserProfile } from "@/lib/data"
 import { CheckCircle, Star, Trophy } from "lucide-react"
 import {ConfettiEffect} from "./confetti"
 

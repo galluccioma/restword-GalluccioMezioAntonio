@@ -1,7 +1,4 @@
-// This is a mock service that would normally interact with a backend API
-// For now, we'll use localStorage to persist data
-
-// Sample data for challenges
+// Sample data challenges
 const sampleChallenges = [
   {
     id: "1",
@@ -66,6 +63,242 @@ const sampleChallenges = [
     completed: false,
   },
 ]
+
+//Badges
+export const allBadges = [
+  {
+    id: "personalInfo",
+    title: "Chef's Hat",
+    description:
+      "Hai completato le tue informazioni personali. Un buon chef si presenta sempre al meglio!",
+    icon: "👨‍🍳",
+    category: "profile",
+    unlockCondition: "Completa tutti i campi delle informazioni personali",
+    points: 15,
+  },
+  {
+    id: "workExperience",
+    title: "Master Chef",
+    description:
+      "Hai dettagliato la tua esperienza lavorativa. La tua esperienza in cucina è impressionante!",
+    icon: "🍳",
+    category: "profile",
+    unlockCondition:
+      "Aggiungi dettagli completi sulle tue esperienze lavorative passate",
+    points: 20,
+  },
+  {
+    id: "education",
+    title: "Culinary School",
+    description:
+      "Hai completato la tua formazione. La tua educazione culinaria è fondamentale!",
+    icon: "🎓",
+    category: "profile",
+    unlockCondition:
+      "Inserisci informazioni sulla tua formazione e i corsi che hai seguito",
+    points: 10,
+  },
+  {
+    id: "skills",
+    title: "Kitchen Tools",
+    description:
+      "Hai aggiunto competenze importanti. I tuoi strumenti culinari sono affilati e pronti!",
+    icon: "🔪",
+    category: "profile",
+    unlockCondition: "Aggiungi almeno 3 competenze chiave",
+    points: 9,
+  },
+  {
+    id: "jobPreferences",
+    title: "Menu Planner",
+    description:
+      "Hai specificato le tue preferenze lavorative. Sai esattamente che tipo di menu vuoi creare!",
+    icon: "📋",
+    category: "profile",
+    unlockCondition:
+      "Specifica le tue preferenze lavorative in modo dettagliato",
+    points: 10,
+  },
+  {
+    id: "cv",
+    title: "Recipe Book",
+    description:
+      "Hai caricato il tuo curriculum vitae. Il tuo libro di ricette personale è pronto!",
+    icon: "📕",
+    category: "profile",
+    unlockCondition: "Carica il tuo CV",
+    points: 10,
+  },
+  {
+    id: "allSections",
+    title: "Stella Michelin",
+    description:
+      "Il tuo profilo è molto completo. Hai guadagnato la tua prima stella Michelin!",
+    icon: "⭐",
+    category: "progress",
+    unlockCondition:
+      "Completa tutte le sezioni del profilo con un alto livello di dettaglio",
+    points: 80,
+  },
+  {
+    id: "expertProfile",
+    title: "Celebrity Chef",
+    description:
+      "Il tuo profilo è eccezionale. Sei diventato uno chef di fama internazionale!",
+    icon: "🌟",
+    category: "progress",
+    unlockCondition:
+      "Raggiungi il massimo punteggio in tutte le sezioni del profilo",
+    points: 95,
+  },
+  {
+    id: "quickPrep",
+    title: "Preparazione Veloce",
+    description:
+      "Hai iniziato a compilare il tuo profilo. Veloce come un commis che prepara gli ingredienti!",
+    icon: "🔪",
+    category: "progress",
+    unlockCondition:
+      "Inizia a compilare il tuo profilo inserendo almeno 3 informazioni",
+    points: 3,
+  },
+  {
+    id: "souschef",
+    title: "Sous Chef",
+    description:
+      "Hai aggiunto più esperienze lavorative. Sei il braccio destro dello chef!",
+    icon: "👨‍🍳",
+    category: "progress",
+    unlockCondition: "Aggiungi almeno 2 esperienze lavorative complete",
+    points: 15,
+  },
+  {
+    id: "menuPlanner",
+    title: "Menu Degustazione",
+    description:
+      "Le tue competenze sono variegate come un menu degustazione in un ristorante stellato!",
+    icon: "📋",
+    category: "progress",
+    unlockCondition: "Aggiungi almeno 5 competenze diverse al tuo profilo",
+    points: 15,
+  },
+  {
+    id: "winePairing",
+    title: "Sommelier",
+    description:
+      "Hai specificato le tue aspettative salariali. Sai abbinare il vino giusto al piatto giusto!",
+    icon: "🍷",
+    category: "progress",
+    unlockCondition:
+      "Specifica le tue aspettative salariali nelle preferenze lavorative",
+    points: 5,
+  },
+  {
+    id: "signatureDish",
+    title: "Piatto Signature",
+    description:
+      "Foto e CV caricati. Hai creato il tuo piatto signature che ti rappresenta!",
+    icon: "🍽️",
+    category: "progress",
+    unlockCondition: "Carica sia la tua foto che il tuo CV",
+    points: 15,
+  },
+  {
+    id: "restaurantOwner",
+    title: "Proprietario di Ristorante",
+    description:
+      "Hai completato tutto il profilo con eccellenza. Sei pronto per gestire il tuo ristorante!",
+    icon: "🏆",
+    category: "progress",
+    unlockCondition:
+      "Completa tutte le sezioni del profilo e raggiungi 100+ punti",
+    points: 100,
+  },
+];
+
+//Achivements
+export const achievements = [
+  {
+    name: "Profilo Completo",
+    description: "Completa tutte le sezioni del profilo",
+    progress: 85,
+    max: 100,
+    icon: "user",
+  },
+  {
+    name: "CV Inviati",
+    description: "Invia 20 CV",
+    progress: 18,
+    max: 20,
+    icon: "file",
+  },
+  {
+    name: "Giorni Attivi",
+    description: "Accedi per 30 giorni consecutivi",
+    progress: 24,
+    max: 30,
+    icon: "calendar",
+  },
+];
+
+//Attività recenti
+export   const recentActivity = [
+  {
+    type: "cv_sent",
+    restaurant: "Ristorante Bella Italia",
+    time: "2 ore fa",
+    points: 15,
+  },
+  {
+    type: "profile_update",
+    section: "Esperienze di lavoro",
+    time: "ieri",
+    points: 10,
+  },
+];
+
+//Sfide in evidenza
+export   const featuredChallenge = {
+  title: "Invia 3 CV oggi",
+  description: "Invia 3 CV a ristoranti che cercano personale nella tua zona",
+  progress: 1,
+  max: 3,
+  points: 40,
+  timeLeft: "5 ore",
+};
+
+//Daily Challenges
+export const dailyChallenges = [
+    {
+      title: "Invia 3 CV oggi",
+      description: "Invia 3 CV a ristoranti che cercano personale",
+      points: 40,
+      progress: 1,
+      max: 3,
+      icon: "file",
+      timeLeft: "5 ore",
+    },
+    {
+      title: "Completa il tuo profilo",
+      description: "Aggiungi le tue esperienze lavorative",
+      points: 25,
+      progress: 2,
+      max: 5,
+      icon: "user",
+      timeLeft: "12 ore",
+    },
+    {
+      title: "Streak di attività",
+      description: "Accedi per 7 giorni consecutivi",
+      points: 50,
+      progress: 6,
+      max: 7,
+      icon: "calendar",
+      timeLeft: "24 ore",
+    },
+  ];
+
+
 
 // Get user profile from localStorage
 export const getUserProfile = async () => {

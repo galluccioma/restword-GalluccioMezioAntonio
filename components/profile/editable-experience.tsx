@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Edit, Trash2, Check, X } from "lucide-react"
-import { updateWorkExperience, deleteWorkExperience } from "@/lib/profile-service"
+import { updateWorkExperience, deleteWorkExperience } from "@/lib/data"
 
 interface Experience {
   id: string

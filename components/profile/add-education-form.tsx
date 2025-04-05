@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Plus, X } from "lucide-react"
-import { addEducation } from "@/lib/profile-service"
+import { addEducation } from "@/lib/data"
 
 interface AddEducationFormProps {
   onAdd?: () => void

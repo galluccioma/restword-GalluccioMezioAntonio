@@ -12,7 +12,7 @@ import EducationForm from "@/components/profile/education-form";
 import PreferencesForm from "@/components/profile/preferences-form";
 import CvUploadForm from "@/components/profile/cv-upload-form";
 import ReviewForm from "@/components/profile/review-form";
-import { saveUserProfile } from "@/lib/profile-service";
+import { saveUserProfile } from "@/lib/data";
 import Link from "next/link";
 
 export default function CreateProfile() {

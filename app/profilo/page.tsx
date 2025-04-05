@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { getUserProfile } from "@/lib/profile-service";
+import { getUserProfile } from "@/lib/data";
 import { Star, MapPin, Mail, Phone, Edit, Plus } from "lucide-react";
 
 // Importazione dei componenti
@@ -25,6 +25,10 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState("panoramica");
   const [isAddingExperience, setIsAddingExperience] = useState(false);
   const [isAddingEducation, setIsAddingEducation] = useState(false);
+
+  const profileStrength = 87
+  const badgeCount = 1 // This would be calculated based on achievements
+  const totalBadges = 14
 
   const loadProfile = async () => {
     try {
@@ -67,7 +71,32 @@ export default function ProfilePage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
+          {/* Purple header banner */}
+          <div className="bg-restword min-h-80 flex items-center rounded-lg p-6 mb-8 text-white">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-20">
+            <div>
+              <h1 className="text-2xl font-bold mb-2">Bentornato Mario</h1>
+              <p className="text-purple-100">
+                Completa le tue sfide giornaliere e porta il tuo profilo al livello successivo!
+              </p>
+            </div>
+            <div className="flex items-center gap-4 mt-4 md:mt-0">
+            <Link href="/profilo/sfide">
+              <div className="bg-white/10 hover:bg-white/30 rounded-lg p-3 text-center min-w-[100px]">
+                <div className="text-2xl font-bold">{profileStrength > 0 ? profileStrength : 0}</div>
+                <div className="text-xs uppercase">Punti</div>
+              </div>
+              </Link>
+              <Link href="/profilo/traguardi">
+              <div className="bg-[#d6e450] hover:bg-[#c9d643] text-black rounded-lg p-3 text-center min-w-[100px]">
+                <div className="text-2xl font-bold">{badgeCount}/{totalBadges}</div>
+                <div className="text-xs uppercase">Badge</div>
+              </div>
+              </Link>
+            </div>
+          </div>
+        </div>
         <Card className="mb-8">
           <CardContent className="p-6 space-y-6">
             {/* Sezione Profilo */}
@@ -134,7 +163,6 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="mt-4">
-                 
                   <Progress value={85} className="h-2 bg-gray-200">
                     <div className="h-full bg-gradient-to-r from-yellow-400 to-purple-600 rounded-full" />
                   </Progress>
