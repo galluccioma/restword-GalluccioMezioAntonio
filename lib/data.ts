@@ -579,3 +579,217 @@ export const updateCV = async (cvId, data) => {
 
 
 
+
+
+//JOBS
+
+// Sample data for jobs
+const sampleJobs = [
+  {
+    id: "1",
+    position: "Chef de Cuisine",
+    company: "Ristorante La Pergola",
+    companyLogo: "/placeholder.svg?height=48&width=48",
+    location: "Roma, Italia",
+    jobType: ["restaurant"],
+    contractType: "full-time",
+    salary: "€3000-3500 mensili",
+    publishedDate: "2025-03-25T10:00:00Z",
+    applicantsCount: 12,
+    description:
+      "Ristorante La Pergola, rinomato ristorante italiano con 2 stelle Michelin, è alla ricerca di uno Chef de Cuisine talentuoso e appassionato per guidare il nostro team di cucina.\n\nCome Chef de Cuisine, sarai responsabile della supervisione di tutte le operazioni di cucina, della creazione di menu stagionali innovativi e della gestione del personale di cucina.\n\nOffriamo un ambiente di lavoro stimolante, opportunità di crescita professionale e un pacchetto retributivo competitivo.",
+    requirements: [
+      "Almeno 5 anni di esperienza in ruoli di cucina di alto livello",
+      "Esperienza precedente come Sous Chef o Chef de Cuisine",
+      "Conoscenza approfondita della cucina italiana contemporanea",
+      "Capacità di leadership e gestione del team",
+      "Creatività e passione per l'innovazione culinaria",
+      "Conoscenza delle normative HACCP e degli standard di sicurezza alimentare",
+    ],
+    requiredSkills: [
+      "Cucina italiana",
+      "Menu planning",
+      "Gestione della brigata",
+      "Controllo costi",
+      "Tecniche di cottura avanzate",
+      "Food presentation",
+    ],
+  },
+  {
+    id: "2",
+    position: "Sous Chef",
+    company: "Hotel Splendido",
+    companyLogo: "/placeholder.svg?height=48&width=48",
+    location: "Milano, Italia",
+    jobType: ["hotel", "restaurant"],
+    contractType: "full-time",
+    salary: "€2500-3000 mensili",
+    publishedDate: "2025-04-01T14:30:00Z",
+    applicantsCount: 8,
+    description:
+      "Hotel Splendido, lussuoso hotel 5 stelle nel cuore di Milano, è alla ricerca di un Sous Chef per il nostro ristorante gourmet.\n\nCome Sous Chef, lavorerai a stretto contatto con l'Executive Chef per garantire il funzionamento efficiente della cucina, supervisionare la preparazione dei piatti e contribuire allo sviluppo di nuovi menu.\n\nOffriamo un ambiente di lavoro internazionale, opportunità di formazione continua e benefit competitivi.",
+    requirements: [
+      "Almeno 3 anni di esperienza in ruoli di cucina di alto livello",
+      "Diploma in arti culinarie o formazione equivalente",
+      "Conoscenza delle tecniche di cucina classica e moderna",
+      "Capacità di lavorare sotto pressione e rispettare le scadenze",
+      "Eccellenti capacità organizzative e di gestione del tempo",
+      "Conoscenza delle normative HACCP",
+    ],
+    requiredSkills: [
+      "Cucina internazionale",
+      "Pasticceria",
+      "Gestione della brigata",
+      "Controllo qualità",
+      "Organizzazione del lavoro",
+    ],
+  },
+  {
+    id: "3",
+    position: "Barista",
+    company: "Caffè Centrale",
+    companyLogo: "/placeholder.svg?height=48&width=48",
+    location: "Firenze, Italia",
+    jobType: ["bar"],
+    contractType: "part-time",
+    salary: "€1200-1500 mensili",
+    publishedDate: "2025-04-03T09:15:00Z",
+    applicantsCount: 5,
+    description:
+      "Caffè Centrale, storico caffè nel centro di Firenze, cerca un barista esperto per unirsi al nostro team.\n\nCome barista, sarai responsabile della preparazione di caffè, cappuccini e altre bevande, dell'accoglienza dei clienti e della gestione della cassa.\n\nOffriamo un ambiente di lavoro dinamico e flessibilità negli orari.",
+    requirements: [
+      "Esperienza precedente come barista",
+      "Conoscenza delle tecniche di preparazione del caffè espresso",
+      "Capacità di lavorare in team",
+      "Buone doti comunicative e orientamento al cliente",
+      "Disponibilità a lavorare nei weekend e in orari flessibili",
+    ],
+    requiredSkills: ["Preparazione caffè", "Latte art", "Gestione cassa", "Servizio clienti", "Mixology base"],
+  },
+  {
+    id: "4",
+    position: "Pasticcere",
+    company: "Dolce Vita Pasticceria",
+    companyLogo: "/placeholder.svg?height=48&width=48",
+    location: "Torino, Italia",
+    jobType: ["pastry"],
+    contractType: "full-time",
+    salary: "€2000-2300 mensili",
+    publishedDate: "2025-04-02T11:45:00Z",
+    applicantsCount: 3,
+    description:
+      "Dolce Vita Pasticceria, rinomata pasticceria artigianale di Torino, cerca un pasticcere talentuoso per ampliare il proprio team.\n\nCome pasticcere, sarai responsabile della preparazione di dolci tradizionali italiani e creazioni innovative, seguendo le ricette dello chef pasticcere e contribuendo con idee creative.\n\nOffriamo un ambiente di lavoro stimolante e la possibilità di esprimere la tua creatività.",
+    requirements: [
+      "Almeno 2 anni di esperienza come pasticcere",
+      "Formazione in pasticceria o esperienza equivalente",
+      "Conoscenza delle tecniche di pasticceria classica",
+      "Creatività e attenzione ai dettagli",
+      "Capacità di lavorare in team",
+      "Disponibilità a lavorare in orari mattutini",
+    ],
+    requiredSkills: ["Pasticceria italiana", "Pasticceria moderna", "Decorazione", "Cioccolateria", "Lievitati"],
+  },
+  {
+    id: "5",
+    position: "Chef de Partie",
+    company: "Trattoria del Mare",
+    companyLogo: "/placeholder.svg?height=48&width=48",
+    location: "Venezia, Italia",
+    jobType: ["restaurant"],
+    contractType: "seasonal",
+    salary: "€2000-2200 mensili",
+    publishedDate: "2025-04-04T16:20:00Z",
+    applicantsCount: 7,
+    description:
+      "Trattoria del Mare, ristorante specializzato in pesce fresco nel cuore di Venezia, cerca uno Chef de Partie per la stagione estiva.\n\nCome Chef de Partie, sarai responsabile della preparazione dei piatti della tua partita, garantendo qualità e consistenza in linea con gli standard del ristorante.\n\nOffriamo un contratto stagionale con possibilità di rinnovo e alloggio per i candidati fuori sede.",
+    requirements: [
+      "Esperienza precedente come Chef de Partie o Commis Chef",
+      "Conoscenza della cucina di pesce",
+      "Capacità di lavorare sotto pressione",
+      "Flessibilità e disponibilità a lavorare nei weekend e in orari serali",
+      "Conoscenza delle normative HACCP",
+    ],
+    requiredSkills: [
+      "Cucina di pesce",
+      "Preparazione primi piatti",
+      "Cotture alla griglia",
+      "Organizzazione del lavoro",
+      "Pulizia e filettatura pesce",
+    ],
+  },
+]
+
+// Sample data for applications
+const sampleApplications = []
+
+
+// Get all jobs
+export const getJobs = async () => {
+  if (typeof window === "undefined") return []
+
+  const jobs = localStorage.getItem("jobs")
+
+  if (!jobs) {
+    localStorage.setItem("jobs", JSON.stringify(sampleJobs))
+    return sampleJobs
+  }
+
+  return JSON.parse(jobs)
+}
+
+// Get user applications
+export const getApplications = async () => {
+  if (typeof window === "undefined") return []
+
+  const applications = localStorage.getItem("applications")
+
+  if (!applications) {
+    localStorage.setItem("applications", JSON.stringify(sampleApplications))
+    return sampleApplications
+  }
+
+  return JSON.parse(applications)
+}
+
+
+// Apply for a job
+export const applyForJob = async (applicationData) => {
+  if (typeof window === "undefined") return false
+
+  const applications = await getApplications()
+
+  // Check if already applied
+  const alreadyApplied = applications.some((app) => app.jobId === applicationData.jobId)
+  if (alreadyApplied) return false
+
+  const newApplication = {
+    id: Date.now().toString(),
+    ...applicationData,
+  }
+
+  const updatedApplications = [...applications, newApplication]
+  localStorage.setItem("applications", JSON.stringify(updatedApplications))
+
+  // Update job applicants count
+  const jobs = await getJobs()
+  const updatedJobs = jobs.map((job) =>
+    job.id === applicationData.jobId ? { ...job, applicantsCount: job.applicantsCount + 1 } : job,
+  )
+  localStorage.setItem("jobs", JSON.stringify(updatedJobs))
+
+  // Check and complete challenge if needed
+  const applications3Challenge = {
+    id: "6",
+    title: "Candidati a 3 offerte",
+    description: "Candidati ad almeno 3 offerte di lavoro",
+    type: "activity",
+    requirement: "3 candidature",
+    points: 20,
+  }
+
+  if (updatedApplications.length >= 3) {
+    await completeChallenge(applications3Challenge.id)
+  }
+
+  return true
+}
