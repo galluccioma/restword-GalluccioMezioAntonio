@@ -37,11 +37,18 @@ export default function BadgeCollection({ achievements, onClose }) {
               {percentUnlocked}%)
             </div>
           </div>
+          <div className="flex gap-6">
           <Link href="/profilo/sfide">
             <Button variant="default" className="">
               Affronta le sfide!
             </Button>
           </Link>
+          <Link href="/candidatura">
+            <Button variant="default" className="">
+              Ricerca lavoro
+            </Button>
+          </Link>
+          </div>
         </div>
       </div>
 

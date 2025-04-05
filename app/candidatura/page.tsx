@@ -132,10 +132,10 @@ export default function JobsPage() {
     const matchesLocation = location === "" || job.location.toLowerCase().includes(location.toLowerCase())
 
     // Filter by job type
-    const matchesJobType = jobType === "" || job.jobType.includes(jobType)
+    const matchesJobType = jobType === "all" || jobType === "" || job.jobType.includes(jobType)
 
     // Filter by contract type
-    const matchesContractType = contractType === "" || job.contractType === contractType
+    const matchesContractType = contractType === "all" || contractType === "" || job.contractType === contractType
 
     return matchesSearch && matchesLocation && matchesJobType && matchesContractType
   })
@@ -300,7 +300,7 @@ export default function JobsPage() {
                         <SelectValue placeholder="Qualsiasi tipo" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">Tutti i tipi</SelectItem>
+                        <SelectItem value="all">Tutti i tipi</SelectItem>
                         <SelectItem value="restaurant">Ristorante</SelectItem>
                         <SelectItem value="hotel">Hotel</SelectItem>
                         <SelectItem value="bar">Bar/Caffetteria</SelectItem>
@@ -316,7 +316,7 @@ export default function JobsPage() {
                         <SelectValue placeholder="Qualsiasi contratto" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">Tutti i contratti</SelectItem>
+                        <SelectItem value="all">Tutti i contratti</SelectItem>
                         <SelectItem value="full-time">Tempo pieno</SelectItem>
                         <SelectItem value="part-time">Part-time</SelectItem>
                         <SelectItem value="seasonal">Stagionale</SelectItem>
@@ -517,6 +517,7 @@ export default function JobsPage() {
                 <Progress
                   value={matchScore}
                   className="h-2"
+                  
                 />
                 <div className="mt-2">
                   {matchScore >= 70 ? (
