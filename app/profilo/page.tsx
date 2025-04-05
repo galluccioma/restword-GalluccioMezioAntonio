@@ -134,17 +134,7 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="mt-4">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm">Profilo 85%</span>
-                    <Link href="/profilo/modifica">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-8 px-2 text-purple-600">
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                    </Link>
-                  </div>
+                 
                   <Progress value={85} className="h-2 bg-gray-200">
                     <div className="h-full bg-gradient-to-r from-yellow-400 to-purple-600 rounded-full" />
                   </Progress>
