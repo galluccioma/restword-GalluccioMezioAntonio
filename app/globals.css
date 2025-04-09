@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: "Pratikal";
+  src: url("../public/TG_Pratikal_bold.woff2");
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 65 75% 51%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 261 67% 55%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 265 89% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --alert: 0 84.2% 60.2%;
+    --alert-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 265 89% 56%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --alert: 0 62.8% 30.6%;
+    --alert-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.badge-counter {
+  @apply bg-yellow-300 text-black font-medium text-xs px-3 py-1 rounded-md;
+}
+
+.step-indicator {
+  @apply flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium;
+}
+
+.step-indicator.active {
+  @apply bg-purple-600 text-white;
+}
+
+.step-indicator.inactive {
+  @apply bg-gray-200 text-gray-500;
+}
+
+.step-indicator.completed {
+  @apply bg-primary text-white;
+}
+
+.skill-tag {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 mr-2 mb-2;
+}
+
+@layer utilities {
+  .bg-restworld {
+    background: url('/bg.avif'), #7641d9;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@layer utilities {
+  .bg-restworld-secondary {
+    background: url('/bg2.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+  }
+}
